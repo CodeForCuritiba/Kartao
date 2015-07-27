@@ -7,7 +7,7 @@ $app['debug'] = true;
 
 // Register the monolog logging service
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
+  'monolog.logfile': 'php://stderr',
 ));
 
 // Our web handlers
@@ -61,19 +61,65 @@ $app->run();
 
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
+var postos = {
+'Rodoferroviária': 'Av. Presidente Affonso Camargo, 330',
+'Rua da Cidadania Boa Vista': 'Av. Paraná, 3600 - Próx. Posto de Saúde 24h - Boa Vista',
+'Rua da Cidadania Boqueirão': 'Terminal do Carmo',
+'Rua da Cidadania Pinheirinho': 'Terminal do Pinheirinho',
+'Rua da Cidadania Portão': 'Terminal do Fazendinha',
+'Rua da Cidadania Santa Felicidade': 'Terminal Santa Felicidade',
+'Rua da Cidadania Matriz': 'Praça Rui Barbosa',
+'Posto Avançado Tatuquara': 'Rua Pero Vaz de Caminha, 560 – Tatuquara'
+};
+var geocoder;
+var map;
 function initialize() {
-  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  defaultLatLng = new google.maps.LatLng(-25.428954,-49.267137);
+  var myLatlng = defaultLatLng;
+
+  geocoder = new google.maps.Geocoder();
   var mapOptions = {
-    zoom: 4,
+    zoom: 14,
     center: myLatlng
   }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Hello World!'
+  $.each(postos,function(name,address){
+    codeAddress(address,name);
   });
+
+  if(navigator.geolocation) {
+      success = function(position) {
+        myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        map.setCenter(myLatlng);
+      };
+      error = function() { console.log('Geocoding failure'); }
+
+      navigator.geolocation.getCurrentPosition(success,error);
+  }
+
+}
+
+function codeAddress(address,title) {
+    geocoder.geocode( { 'address': address+', Curitiba, Brasil'}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            title: title,
+            color: "#369",
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+            content: '<div id="content"><h3>' + title + '</h3><p>' + address + '</p></div>',
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+      } else {
+        consol.log('Geocode was not successful for the following reason: ' + status);
+      }
+    });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

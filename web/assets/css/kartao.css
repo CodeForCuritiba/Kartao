@@ -4,7 +4,7 @@
 	background-image: none;
 }
 
-#map-canvas { height:50%; }
+#map-canvas { height:50%; color: #333; }
 
 @media(min-width:768px) {
 #map-canvas { width:768px; margin: auto;}
