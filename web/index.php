@@ -67,7 +67,7 @@ var postos = {
 'Rua da Cidadania Boqueirão': 'Terminal do Carmo',
 'Rua da Cidadania Pinheirinho': 'Terminal do Pinheirinho',
 'Rua da Cidadania Portão': 'Terminal do Fazendinha',
-'Rua da Cidadania Santa Felicidade': 'Terminal Santa Felicidade',
+'Rua da Cidadania Santa Felicidade': 'Terminal Santa Felicidade - Santa Felicidade',
 'Rua da Cidadania Matriz': 'Praça Rui Barbosa',
 'Posto Avançado Tatuquara': 'Rua Pero Vaz de Caminha, 560 – Tatuquara'
 };
@@ -100,8 +100,11 @@ function initialize() {
 
 }
 
+var windowopen;
 function codeAddress(address,title) {
+    console.log(address+', Curitiba, Brasil');
     geocoder.geocode( { 'address': address+', Curitiba, Brasil'}, function(results, status) {
+      console.log(results);
       if (status == google.maps.GeocoderStatus.OK) {
         var marker = new google.maps.Marker({
             map: map,
@@ -113,8 +116,11 @@ function codeAddress(address,title) {
         var infowindow = new google.maps.InfoWindow({
             content: '<div id="content"><h3>' + title + '</h3><p>' + address + '</p></div>',
         });
+
         google.maps.event.addListener(marker, 'click', function() {
+            if (windowopen) windowopen.close();
             infowindow.open(map,marker);
+            windowopen = infowindow;
         });
       } else {
         consol.log('Geocode was not successful for the following reason: ' + status);
