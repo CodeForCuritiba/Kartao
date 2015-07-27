@@ -137,7 +137,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <body>
 
     <!-- Navigation -->
-    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <!--a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
@@ -148,7 +148,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                 <a href="#contact" onclick = $("#menu-close").click(); >Contato</a>
             </li>
         </ul>
-    </nav>
+    </nav-->
 
     <!-- Header -->
     <header id="top" class="header">
