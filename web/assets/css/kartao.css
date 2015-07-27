@@ -1,0 +1,11 @@
+.header {
+	color: #fff;
+	background-color: #333;
+	background-image: none;
+}
+
+#map-canvas { height:50%; }
+
+@media(min-width:768px) {
+#map-canvas { width:768px; margin: auto;}
+}
