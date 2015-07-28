@@ -31,9 +31,9 @@ $app->run();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Mapa dos lugares aonde comprar ou recaregar seu cartão de transporte da URBS">
+    <meta name="description" content="Mapa dos lugares aonde fazer e caregar seu cartão de transporte da URBS">
     <meta name="author" content="Kartão">
-    <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs">
+    <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário">
     <link rel="icon" href="./favicon.ico">
 
     <title>Mapa do Cartão Transporte de Curitiba</title>
@@ -61,23 +61,51 @@ $app->run();
 
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
+var postos_default_horarios = "dias úteis das 8h30 às 17h";
 var postos = {
-'Rodoferroviária': 'Av. Presidente Affonso Camargo, 330',
-'Rua da Cidadania Boa Vista': 'Av. Paraná, 3600 - Próx. Posto de Saúde 24h - Boa Vista',
-'Rua da Cidadania Boqueirão': 'Terminal do Carmo',
-'Rua da Cidadania Pinheirinho': 'Terminal do Pinheirinho',
-'Rua da Cidadania Portão': 'Terminal do Fazendinha',
-'Rua da Cidadania Santa Felicidade': 'Terminal Santa Felicidade - Santa Felicidade',
-'Rua da Cidadania Matriz': 'Praça Rui Barbosa',
-'Posto Avançado Tatuquara': 'Rua Pero Vaz de Caminha, 560 – Tatuquara'
+'Rodoferroviária': ['Av. Presidente Affonso Camargo, 330',-25.437040, -49.256569,postos_default_horarios],
+'Rua da Cidadania Boa Vista': ['Av. Paraná, 3600 - Próx. Posto de Saúde 24h - Boa Vista',-25.385353, -49.232734,postos_default_horarios],
+'Rua da Cidadania Boqueirão': ['Terminal do Carmo',-25.500989, -49.236959,postos_default_horarios],
+'Rua da Cidadania Pinheirinho': ['Terminal do Pinheirinho',-25.513913, -49.295273,postos_default_horarios],
+'Rua da Cidadania Portão': ['Terminal do Fazendinha',-25.477915, -49.327196,postos_default_horarios],
+'Rua da Cidadania Santa Felicidade': ['Terminal Santa Felicidade',-25.400827, -49.330032,postos_default_horarios],
+'Rua da Cidadania Matriz': ['Praça Rui Barbosa',-25.435135, -49.272574,postos_default_horarios],
+'Posto Avançado Tatuquara': ['Rua Pero Vaz de Caminha, 560 – Tatuquara',-25.564596, -49.338420,"dias úteis das 9h às 12h e das 13h às 17h"],
 };
+
+var vendas = {
+'Travessa Moreira Garcez': ['Em frente à galeria Tobias de Macedo',-25.428872, -49.270421],
+'13 de Maio': ['Na esquina das ruas Barão do Cerro Azul e 13 de Maio',-25.426942, -49.270775],
+'Arcadas do Pelourinho': ['Em frente a Loja Riachuelo',-25.429892, -49.270780],
+'Banca Bom Jesus': ['Na Praça Rui Barbosa, perto da Rua 24 de Maio',-25.436540, -49.274425],
+'Banca Bom Jesus II': ['Na Praça Rui Barbosa, perto da Voluntários da Pátria',-25.434816, -49.272799],
+'Banca Revistaria Cultura': ['Na Praça Rui Barbosa, perto da Desembargador Westphalen',-25.434884, -49.272185],
+'Banca da Cátia': ['Na Praça Rui Barbosa, em frente ao Colégio São José',-25.435879, -49.274217],
+'Banca do Cyro': ['Na Praça Tiradentes', -25.430059, -49.271103],
+'Banca Carlos Gomes': ['Na Praça Carlos Gomes',-25.432961, -49.270134],
+'Banca Staub': ['Na Avenida Marechal Deodoro, esquina com João Negrão',-25.430353, -49.266841],
+'Banca de café - Café Zacarias':['Na Praça Zacarias',-25.432632, -49.272945],
+'Banca Passeio': ['Na Praça 19 de Dezembro',-25.424687, -49.269595],
+'Banca em frente ao Itaú': ['No Centro Cívico, perto da Prefeitura',-25.418012, -49.268721],
+'Banca Candido do Abreu': ['No Centro Cívico, perto da Comendador Fontana',-25.418833, -49.268575],   
+'Lanchonete Haluche': ['Terminal Cabral',-25.406598, -49.252688],
+'Lanches Veneto': ['Terminal Santa Felicidade',-25.400604, -49.330547],
+'Tívoli Comércio de Jornais': ['Terminal Campina do Siqueira',-25.435908, -49.306869],
+'Vital & Araújo': ['Terminal Vila Hauer',-25.481281, -49.247183],
+'Revistaria Portão': ['Terminal Portão',-25.475975, -49.292895],
+'Tailândia Doces e Salgados': ['Terminal Centenário',-25.468831, -49.207789],
+'Lanchonete do Terminal Fazendinha': ['Terminal Fazendinha',-25.477286, -49.327147],
+'Banca e Revistaria Santa Júlia': ['Terminal Campo Comprido',-25.441483, -49.346671],
+'Kerida Present\'s': ['Na Rua da Cidadania Boa Vista',-25.385293, -49.232684],
+'Estação tubo Santa Quitéria': ['Av. Pres. Arthur Bernardes - Santa Quitéria',-25.459171, -49.302421],
+};
+
 var geocoder;
 var map;
 function initialize() {
   defaultLatLng = new google.maps.LatLng(-25.428954,-49.267137);
   var myLatlng = defaultLatLng;
 
-  geocoder = new google.maps.Geocoder();
   var mapOptions = {
     zoom: 14,
     center: myLatlng
@@ -85,11 +113,17 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   $.each(postos,function(name,address){
-    codeAddress(address,name);
+    codeAddress(address,name,'assets/img/posto.png');
   });
+
+  $.each(vendas,function(name,address){
+    codeAddress(address,name,'assets/img/venda.png');
+  });
+
 
   if(navigator.geolocation) {
       success = function(position) {
+        console.log(position);
         myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         map.setCenter(myLatlng);
       };
@@ -101,30 +135,25 @@ function initialize() {
 }
 
 var windowopen;
-function codeAddress(address,title) {
-    console.log(address+', Curitiba, Brasil');
-    geocoder.geocode( { 'address': address+', Curitiba, Brasil'}, function(results, status) {
-      console.log(results);
-      if (status == google.maps.GeocoderStatus.OK) {
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location,
-            title: title,
-            color: "#369",
-        });
+function codeAddress(address,title,icon) {
+    var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(address[1],address[2]),
+        title: title,
+        icon: icon,
+    });
 
-        var infowindow = new google.maps.InfoWindow({
-            content: '<div id="content"><h3>' + title + '</h3><p>' + address + '</p></div>',
-        });
+    content = '<div id="content"><h3>' + title + '</h3><p>' + address[0];
+    if (address[3]) content = content + '<br/>Aberto ' + address[3] + '</p></div>';
 
-        google.maps.event.addListener(marker, 'click', function() {
-            if (windowopen) windowopen.close();
-            infowindow.open(map,marker);
-            windowopen = infowindow;
-        });
-      } else {
-        consol.log('Geocode was not successful for the following reason: ' + status);
-      }
+    var infowindow = new google.maps.InfoWindow({
+        content:  content,
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+        if (windowopen) windowopen.close();
+        infowindow.open(map,marker);
+        windowopen = infowindow;
     });
 }
 
@@ -157,6 +186,21 @@ google.maps.event.addDomListener(window, 'load', initialize);
             <h3>Mapa dos lugares aonde comprar ou recarregar seu cartão de transporte da URBS</h3>
             <!--a href="#about" class="btn btn-dark btn-lg">Find Out More</a-->
             <div id="map-canvas"></div>
+            <div class="row legend">
+                <div class="col-sm-6">
+                    <img src="assets/img/text.png"/>
+                    <p>
+                        Onde fazer o Cartão Transporte Usuário
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <img src="assets/img/recycle.png"/>
+                    <p>
+                        Onde carregar o cartão transporte usuário e <br>
+                        comprar e carregar o cartão transporte avulso
+                    </p>
+                </div>
+            </div>
         </div>
     </header>
 
