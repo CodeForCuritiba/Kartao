@@ -19,6 +19,46 @@ $app->get('/', function() use($app) {
 
 $app->run();
 */
+
+$postos_default_horarios = "dias úteis das 8h30 às 17h";
+$postos = array(
+'Rodoferroviária' => array('Av. Presidente Affonso Camargo, 330',-25.437040, -49.256569,$postos_default_horarios),
+'Rua da Cidadania Boa Vista' => array('Av. Paraná, 3600 - Próx. Posto de Saúde 24h - Boa Vista',-25.385353, -49.232734,$postos_default_horarios),
+'Rua da Cidadania Boqueirão' => array('Terminal do Carmo',-25.500989, -49.236959,$postos_default_horarios),
+'Rua da Cidadania Pinheirinho' => array('Terminal do Pinheirinho',-25.513913, -49.295273,$postos_default_horarios),
+'Rua da Cidadania Portão' => array('Terminal do Fazendinha',-25.477915, -49.327196,$postos_default_horarios),
+'Rua da Cidadania Santa Felicidade' => array('Terminal Santa Felicidade',-25.400827, -49.330032,$postos_default_horarios),
+'Rua da Cidadania Matriz' => array('Praça Rui Barbosa',-25.435135, -49.272574,$postos_default_horarios),
+'Posto Avançado Tatuquara' => array('Rua Pero Vaz de Caminha, 560 – Tatuquara',-25.564596, -49.338420,'dias úteis das 9h às 12h e das 13h às 17h'),
+);
+
+$vendas = array(
+'Travessa Moreira Garcez' => array('Em frente à galeria Tobias de Macedo',-25.428872, -49.270421),
+'13 de Maio' => array('Na esquina das ruas Barão do Cerro Azul e 13 de Maio',-25.426942, -49.270775),
+'Arcadas do Pelourinho' => array('Em frente a Loja Riachuelo',-25.429892, -49.270780),
+'Banca Bom Jesus' => array('Na Praça Rui Barbosa, perto da Rua 24 de Maio',-25.436540, -49.274425),
+'Banca Bom Jesus II' => array('Na Praça Rui Barbosa, perto da Voluntários da Pátria',-25.434816, -49.272799),
+'Banca Revistaria Cultura' => array('Na Praça Rui Barbosa, perto da Desembargador Westphalen',-25.434884, -49.272185),
+'Banca da Cátia' => array('Na Praça Rui Barbosa, em frente ao Colégio São José',-25.435879, -49.274217),
+'Banca do Cyro' => array('Na Praça Tiradentes', -25.430059, -49.271103),
+'Banca Carlos Gomes' => array('Na Praça Carlos Gomes',-25.432961, -49.270134),
+'Banca Staub' => array('Na Avenida Marechal Deodoro, esquina com João Negrão',-25.430353, -49.266841),
+'Banca de café - Café Zacarias' => array('Na Praça Zacarias',-25.432632, -49.272945),
+'Banca Passeio' => array('Na Praça 19 de Dezembro',-25.424687, -49.269595),
+'Banca em frente ao Itaú' => array('No Centro Cívico, perto da Prefeitura',-25.418012, -49.268721),
+'Banca Candido do Abreu' => array('No Centro Cívico, perto da Comendador Fontana',-25.418833, -49.268575),   
+'Lanchonete Haluche' => array('Terminal Cabral',-25.406598, -49.252688),
+'Lanches Veneto' => array('Terminal Santa Felicidade',-25.400604, -49.330547),
+'Tívoli Comércio de Jornais' => array('Terminal Campina do Siqueira',-25.435908, -49.306869),
+'Vital & Araújo' => array('Terminal Vila Hauer',-25.481281, -49.247183),
+'Revistaria Portão' => array('Terminal Portão',-25.475975, -49.292895),
+'Tailândia Doces e Salgados' => array('Terminal Centenário',-25.468831, -49.207789),
+'Lanchonete do Terminal Fazendinha' => array('Terminal Fazendinha',-25.477286, -49.327147),
+'Banca e Revistaria Santa Júlia' => array('Terminal Campo Comprido',-25.441483, -49.346671),
+'Kerida Present\'s' => array('Na Rua da Cidadania Boa Vista',-25.385293, -49.232684),
+'Estação tubo Santa Quitéria' => array('Av. Pres. Arthur Bernardes - Santa Quitéria',-25.459171, -49.302421),
+);
+
 ?>
 
 
@@ -31,8 +71,8 @@ $app->run();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Mapa dos lugares aonde emitir e carregar seu cartão de transporte da URBS de Curitiba">
-    <meta name="author" content="Kartão">
+    <meta name="description" content="Mapa dos lugares aonde emitir e carregar seu cartão transporte da URBS em Curitiba">
+    <meta name="author" content="Kartão.com.br">
     <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário, banca">
 
     <!-- Icons -->
@@ -56,9 +96,9 @@ $app->run();
 
     <!-- meta OG -->    
     <meta property="og:title" content="Cartão Transporte de Curitiba"/>
-    <meta property="og:site_name" content="Wannago, l&#039;officiel du tourisme"/>  
+    <meta property="og:site_name" content="Cartão.com.br"/>  
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Mapa dos lugares aonde emitir e carregar seu cartão de transporte da URBS de Curitiba"/> 
+    <meta property="og:description" content="Mapa dos lugares aonde emitir e carregar seu cartão transporte da URBS em Curitiba"/> 
     <?php $domain = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:$_SERVER['SERVER_NAME']; ?>
     <meta property="og:url" content="http://<?php echo $domain; ?>" />
     <meta property="og:image" content="http://<?php echo $domain; ?>/assets/img/onibus.jpg"/>
@@ -134,28 +174,33 @@ function initialize() {
   var myLatlng = defaultLatLng;
 
   var mapOptions = {
-    zoom: 14,
+    zoom: 11,
     center: myLatlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     panControl: false,
     scaleControl: false,
     scrollwheel: false,
   }
-
+/*
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     mapOptions['draggable'] = false
   }
-  
+*/
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  $.each(postos,function(name,address){
-    codeAddress(address,name,'assets/img/posto.png');
-  });
+<?php 
+    foreach ($postos as $title => $posto) {
+        $icon = 'assets/img/posto.png';
+        echo 'drawMarker("'.$title.'","'.$posto[0],'",'.$posto[1].','.$posto[2].','.(isset($posto[3])?'"'.$posto[3].'"':null).',"'.$icon.'");';
+    }
+?>
 
-  $.each(vendas,function(name,address){
-    codeAddress(address,name,'assets/img/venda.png');
-  });
-
+<?php 
+    foreach ($vendas as $title => $venda) {
+        $icon = 'assets/img/venda.png';
+        echo 'drawMarker("'.$title.'","'.$venda[0],'",'.$venda[1].','.$venda[2].','.(isset($venda[3])?'"'.$venda[3].'"':'null').',"'.$icon.'");';
+    }
+?>
 
   if(navigator.geolocation) {
       success = function(position) {
@@ -171,16 +216,16 @@ function initialize() {
 }
 
 var windowopen;
-function codeAddress(address,title,icon) {
+function drawMarker(title,address,lat,lng,openhours,icon) {
     var marker = new google.maps.Marker({
         map: map,
-        position: new google.maps.LatLng(address[1],address[2]),
+        position: new google.maps.LatLng(lat,lng),
         title: title,
         icon: icon,
     });
 
-    content = '<div id="content"><h3>' + title + '</h3><p>' + address[0];
-    if (address[3]) content = content + '<br/>Aberto ' + address[3] + '</p></div>';
+    content = '<div id="content"><h3>' + title + '</h3><p>' + address;
+    if (openhours) content = content + '<br/>Aberto ' + openhours + '</p></div>';
 
     var infowindow = new google.maps.InfoWindow({
         content:  content,
@@ -219,7 +264,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <header id="top" class="header">
         <div class="text-vertical-center">
             <h1>Cartão Transporte de Curitiba</h1>
-            <h3>Mapa dos lugares aonde comprar ou recarregar seu cartão de transporte da URBS</h3>
+            <h3>Mapa dos lugares aonde comprar ou recarregar seu cartão transporte da URBS</h3>
             <!--a href="#about" class="btn btn-dark btn-lg">Find Out More</a-->
             <div id="map-canvas"></div>
             <div class="row legend">
