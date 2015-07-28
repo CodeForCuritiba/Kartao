@@ -9,6 +9,13 @@ body {
 
 #map-canvas { height:300px; color: #333; }
 
+#places {
+	padding: 50px 0;
+	background-color: white;
+	color:#333;
+}
+
+
 @media(min-width:768px) {
 	.header { height: 100%; }
 	#map-canvas { height: 50%; }

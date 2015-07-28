@@ -128,46 +128,6 @@ $vendas = array(
 
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
-var postos_default_horarios = "dias úteis das 8h30 às 17h";
-var postos = {
-'Rodoferroviária': ['Av. Presidente Affonso Camargo, 330',-25.437040, -49.256569,postos_default_horarios],
-'Rua da Cidadania Boa Vista': ['Av. Paraná, 3600 - Próx. Posto de Saúde 24h - Boa Vista',-25.385353, -49.232734,postos_default_horarios],
-'Rua da Cidadania Boqueirão': ['Terminal do Carmo',-25.500989, -49.236959,postos_default_horarios],
-'Rua da Cidadania Pinheirinho': ['Terminal do Pinheirinho',-25.513913, -49.295273,postos_default_horarios],
-'Rua da Cidadania Portão': ['Terminal do Fazendinha',-25.477915, -49.327196,postos_default_horarios],
-'Rua da Cidadania Santa Felicidade': ['Terminal Santa Felicidade',-25.400827, -49.330032,postos_default_horarios],
-'Rua da Cidadania Matriz': ['Praça Rui Barbosa',-25.435135, -49.272574,postos_default_horarios],
-'Posto Avançado Tatuquara': ['Rua Pero Vaz de Caminha, 560 – Tatuquara',-25.564596, -49.338420,"dias úteis das 9h às 12h e das 13h às 17h"],
-};
-
-var vendas = {
-'Travessa Moreira Garcez': ['Em frente à galeria Tobias de Macedo',-25.428872, -49.270421],
-'13 de Maio': ['Na esquina das ruas Barão do Cerro Azul e 13 de Maio',-25.426942, -49.270775],
-'Arcadas do Pelourinho': ['Em frente a Loja Riachuelo',-25.429892, -49.270780],
-'Banca Bom Jesus': ['Na Praça Rui Barbosa, perto da Rua 24 de Maio',-25.436540, -49.274425],
-'Banca Bom Jesus II': ['Na Praça Rui Barbosa, perto da Voluntários da Pátria',-25.434816, -49.272799],
-'Banca Revistaria Cultura': ['Na Praça Rui Barbosa, perto da Desembargador Westphalen',-25.434884, -49.272185],
-'Banca da Cátia': ['Na Praça Rui Barbosa, em frente ao Colégio São José',-25.435879, -49.274217],
-'Banca do Cyro': ['Na Praça Tiradentes', -25.430059, -49.271103],
-'Banca Carlos Gomes': ['Na Praça Carlos Gomes',-25.432961, -49.270134],
-'Banca Staub': ['Na Avenida Marechal Deodoro, esquina com João Negrão',-25.430353, -49.266841],
-'Banca de café - Café Zacarias':['Na Praça Zacarias',-25.432632, -49.272945],
-'Banca Passeio': ['Na Praça 19 de Dezembro',-25.424687, -49.269595],
-'Banca em frente ao Itaú': ['No Centro Cívico, perto da Prefeitura',-25.418012, -49.268721],
-'Banca Candido do Abreu': ['No Centro Cívico, perto da Comendador Fontana',-25.418833, -49.268575],   
-'Lanchonete Haluche': ['Terminal Cabral',-25.406598, -49.252688],
-'Lanches Veneto': ['Terminal Santa Felicidade',-25.400604, -49.330547],
-'Tívoli Comércio de Jornais': ['Terminal Campina do Siqueira',-25.435908, -49.306869],
-'Vital & Araújo': ['Terminal Vila Hauer',-25.481281, -49.247183],
-'Revistaria Portão': ['Terminal Portão',-25.475975, -49.292895],
-'Tailândia Doces e Salgados': ['Terminal Centenário',-25.468831, -49.207789],
-'Lanchonete do Terminal Fazendinha': ['Terminal Fazendinha',-25.477286, -49.327147],
-'Banca e Revistaria Santa Júlia': ['Terminal Campo Comprido',-25.441483, -49.346671],
-'Kerida Present\'s': ['Na Rua da Cidadania Boa Vista',-25.385293, -49.232684],
-'Estação tubo Santa Quitéria': ['Av. Pres. Arthur Bernardes - Santa Quitéria',-25.459171, -49.302421],
-};
-
-var geocoder;
 var map;
 function initialize() {
   defaultLatLng = new google.maps.LatLng(-25.428954,-49.267137);
@@ -277,14 +237,63 @@ google.maps.event.addDomListener(window, 'load', initialize);
                 <div class="col-sm-6">
                     <img src="assets/img/recycle.png"/>
                     <p>
-                        Onde carregar o cartão transporte usuário e <br>
-                        comprar e carregar o cartão transporte avulso
+                        Onde carregar o Cartão Transporte Usuário e <br>
+                        comprar e carregar o Cartão Transporte Avulso
                     </p>
                 </div>
             </div>
         </div>
     </header>
 
+    <section id="places" class="places">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <h2>Onde fazer o Cartão Transporte Usuário?</h2>
+                    <?php foreach ($postos as $title => $place) : ?>
+                    <div class="place">
+                        <h3><?php echo $title; ?></h3>
+                        <p>
+                            <span class="address"><?php echo $place[0]; ?></span><br/>
+                            <?php if (isset($place[3])) : ?>
+                                <span class="openhours"><?php echo $place[3]; ?></span>
+                            <?php endif; ?>
+                        </p>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <h2>Onde carregar o Cartão Transporte Usuário?</h2>
+                    <h2>Onde comprar e carregar o Cartão Transporte Avulso?</h2>
+                    <?php foreach ($vendas as $title => $place) : ?>
+                    <div class="place">
+                        <h3><?php echo $title; ?></h3>
+                        <p>
+                            <span class="address"><?php echo $place[0]; ?></span><br/>
+                            <?php if (isset($place[3])) : ?>
+                                <span class="openhours"><?php echo $place[3]; ?></span>
+                            <?php endif; ?>
+                        </p>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Kartão.com.br</strong>
+                    </h4>
+                 </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- jQuery -->
     <script src="assets/js/jquery.js"></script>
