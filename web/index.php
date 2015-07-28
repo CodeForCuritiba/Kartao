@@ -135,8 +135,17 @@ function initialize() {
 
   var mapOptions = {
     zoom: 14,
-    center: myLatlng
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    panControl: false,
+    scaleControl: false,
+    scrollwheel: false,
   }
+
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    mapOptions['draggable'] = false
+  }
+  
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
   $.each(postos,function(name,address){

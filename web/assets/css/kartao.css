@@ -1,11 +1,13 @@
-.header {
+body {
 	color: #fff;
 	background-color: #333;
+}
+.header {
 	background-image: none;
 	height: auto;
 }
 
-#map-canvas { height:200px; color: #333; }
+#map-canvas { height:300px; color: #333; }
 
 @media(min-width:768px) {
 	.header { height: 100%; }
