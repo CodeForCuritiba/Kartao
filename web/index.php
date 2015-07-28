@@ -31,12 +31,39 @@ $app->run();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Mapa dos lugares aonde fazer e caregar seu cartão de transporte da URBS">
+    <meta name="description" content="Mapa dos lugares aonde emitir e carregar seu cartão de transporte da URBS de Curitiba">
     <meta name="author" content="Kartão">
-    <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário">
-    <link rel="icon" href="./favicon.ico">
+    <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário, banca">
 
-    <title>Mapa do Cartão Transporte de Curitiba</title>
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- meta OG -->    
+    <meta property="og:title" content="Cartão Transporte de Curitiba"/>
+    <meta property="og:site_name" content="Wannago, l&#039;officiel du tourisme"/>  
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Mapa dos lugares aonde emitir e carregar seu cartão de transporte da URBS de Curitiba"/> 
+    <?php $domain = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:$_SERVER['SERVER_NAME']; ?>
+    <meta property="og:url" content="http://<?php echo $domain; ?>" />
+    <meta property="og:image" content="http://<?php echo $domain; ?>/assets/img/onibus.jpg"/>
+
+    <title>Cartão Transporte de Curitiba</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -243,9 +270,19 @@ google.maps.event.addDomListener(window, 'load', initialize);
     });
     </script>
 
-
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65707639-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
   </body>
 </html>
 
