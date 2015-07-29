@@ -163,8 +163,6 @@ function initialize() {
       success = function(position) {
         lat = position.coords.latitude;
         lng = position.coords.longitude;
-        lat = -25.4151;
-        lng = -49.274;
         myLatlng = new google.maps.LatLng(lat, lng);
         map.setCenter(myLatlng);
         zoom = ((lat > -25.439) && (lat < -25.415) && (lng > -49.275) && (lng < -49.262))?15:13;
