@@ -35,7 +35,7 @@ $postos = array(
 $vendas = array(
 'Travessa Moreira Garcez' => array('Em frente à galeria Tobias de Macedo',-25.428872, -49.270421),
 '13 de Maio' => array('Na esquina das ruas Barão do Cerro Azul e 13 de Maio',-25.426942, -49.270775),
-'Arcadas do Pelourinho' => array('Em frente a Loja Riachuelo',-25.429892, -49.270780),
+'Arcadas do Pelourinho' => array('Na praça Generoso Marques, em frente a Loja Riachuelo',-25.429892, -49.270780),
 'Banca Bom Jesus' => array('Na Praça Rui Barbosa, perto da Rua 24 de Maio',-25.436540, -49.274425),
 'Banca Bom Jesus II' => array('Na Praça Rui Barbosa, perto da Voluntários da Pátria',-25.434816, -49.272799),
 'Banca Revistaria Cultura' => array('Na Praça Rui Barbosa, perto da Desembargador Westphalen',-25.434884, -49.272185),
@@ -61,9 +61,6 @@ $vendas = array(
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,7 +68,7 @@ $vendas = array(
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Mapa dos lugares aonde emitir e carregar seu cartão transporte da URBS em Curitiba">
+    <meta name="description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba">
     <meta name="author" content="Kartão.com.br">
     <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário, banca">
 
@@ -98,7 +95,7 @@ $vendas = array(
     <meta property="og:title" content="Cartão Transporte de Curitiba"/>
     <meta property="og:site_name" content="Cartão.com.br"/>  
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Mapa dos lugares aonde emitir e carregar seu cartão transporte da URBS em Curitiba"/> 
+    <meta property="og:description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba"/> 
     <?php $domain = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:$_SERVER['SERVER_NAME']; ?>
     <meta property="og:url" content="http://<?php echo $domain; ?>" />
     <meta property="og:image" content="http://<?php echo $domain; ?>/assets/img/onibus.jpg"/>
@@ -164,9 +161,14 @@ function initialize() {
 
   if(navigator.geolocation) {
       success = function(position) {
-        console.log(position);
-        myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        lat = -25.4151;
+        lng = -49.274;
+        myLatlng = new google.maps.LatLng(lat, lng);
         map.setCenter(myLatlng);
+        zoom = ((lat > -25.439) && (lat < -25.415) && (lng > -49.275) && (lng < -49.262))?15:13;
+        map.setZoom(zoom);
       };
       error = function() { console.log('Geocoding failure'); }
 
@@ -184,7 +186,7 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
         icon: icon,
     });
 
-    content = '<div id="content"><h3>' + title + '</h3><p>' + address;
+    content = '<div id="content"><h3>' + lat + ' - ' + lng + '</h3><p>' + address;
     if (openhours) content = content + '<br/>Aberto ' + openhours + '</p></div>';
 
     var infowindow = new google.maps.InfoWindow({
@@ -231,7 +233,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                 <div class="col-sm-6">
                     <img src="assets/img/text.png"/>
                     <p>
-                        Onde fazer o Cartão Transporte Usuário
+                        Onde emitir o Cartão Transporte Usuário
                     </p>
                 </div>
                 <div class="col-sm-6">
@@ -249,14 +251,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 text-center">
-                    <h2>Onde fazer o Cartão Transporte Usuário?</h2>
+                    <h2>Onde emitir o Cartão Transporte Usuário?</h2>
                     <?php foreach ($postos as $title => $place) : ?>
                     <div class="place">
                         <h3><?php echo $title; ?></h3>
                         <p>
                             <span class="address"><?php echo $place[0]; ?></span><br/>
                             <?php if (isset($place[3])) : ?>
-                                <span class="openhours"><?php echo $place[3]; ?></span>
+                                <span class="openhours">Aberto <?php echo $place[3]; ?></span>
                             <?php endif; ?>
                         </p>
                     </div>
@@ -271,7 +273,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                         <p>
                             <span class="address"><?php echo $place[0]; ?></span><br/>
                             <?php if (isset($place[3])) : ?>
-                                <span class="openhours"><?php echo $place[3]; ?></span>
+                                <span class="openhours">Aberto <?php echo $place[3]; ?></span>
                             <?php endif; ?>
                         </p>
                     </div>
@@ -288,7 +290,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Kartão.com.br</strong>
+                    <h4><strong>Kartao.com.br</strong>
                     </h4>
                  </div>
             </div>
