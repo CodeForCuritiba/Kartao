@@ -184,7 +184,7 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
         icon: icon,
     });
 
-    content = '<div id="content"><h3>' + lat + ' - ' + lng + '</h3><p>' + address;
+    content = '<div id="content"><h3>' + title + '</h3><p>' + address;
     if (openhours) content = content + '<br/>Aberto ' + openhours + '</p></div>';
 
     var infowindow = new google.maps.InfoWindow({
