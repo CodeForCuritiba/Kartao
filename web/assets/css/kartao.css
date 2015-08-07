@@ -25,3 +25,7 @@ body {
 #map-canvas { width:1024px; margin: auto;}
 header .row { width:1024px; margin: auto;}
 }
+
+li {
+	list-style: none;
+}

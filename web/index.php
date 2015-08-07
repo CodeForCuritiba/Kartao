@@ -59,6 +59,17 @@ $vendas = array(
 'Estação tubo Santa Quitéria' => array('Av. Pres. Arthur Bernardes - Santa Quitéria',-25.459171, -49.302421),
 );
 
+$linhas = array(
+'A Munhoz/Botânico','Ahú/Los Ângeles','Alferes Poli','Augusta','Augusto Stresser','Bigorrilho','Butiatuvinha','Canal Belém/Salgado Filho',
+'Canal da Música/Vista Alegre','Cajuru','Cassiopéia','Circular Centro','Cristo Rei','Dom Ático','Estribo Ahú','Estudante','Fernando de Noronha',
+'Formosa','Fredolin Wolf','Guabirotuba','Interhospitais','Itupava/Hospital Militar','Jardim Arroio','Jardim Esplanada','Jardim Social/Batel',
+'José Culpi','Julio Graff','Laranjeiras','Lindóia','Marechal Hermes/Santa Efigênia','Mateus Leme','Mercúrio','Mossunguê','Nilo Peçanha',
+'Nossa Senhora de Nazaré','Novo Mundo','Ouro Verde/ Vila Bádia','Paineiras','Palotinos','Passaúna','Pinheirinho/CIC','Portão',
+'Portão/Santa Bernadethe (Linha Verde)','Quartel General','São Benedito','São Bernardo','São João','São Jorge','Santa Amélia','Santa Bárbara',
+'Santa Gema','Santa Quitéria','Solar','Tingui','Tramontina','Universidades','Vila Izabel','Vila Macedo','Vila Marqueto','Vila Rosinha',
+'Vila Suíça','Veneza','Vila Velha/Buriti'
+);
+
 ?>
 
 <!DOCTYPE html>
@@ -248,7 +259,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <section id="places" class="places">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 text-center">
+                <div class="col-sm-4 text-center">
                     <h2>Onde emitir o Cartão Transporte Usuário?</h2>
                     <?php foreach ($postos as $title => $place) : ?>
                     <div class="place">
@@ -262,7 +273,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                     </div>
                     <?php endforeach; ?>
                 </div>
-                <div class="col-sm-6 text-center">
+                <div class="col-sm-4 text-center">
                     <h2>Onde carregar o Cartão Transporte Usuário?</h2>
                     <h2>Onde comprar e carregar o Cartão Transporte Avulso?</h2>
                     <?php foreach ($vendas as $title => $place) : ?>
@@ -276,6 +287,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
                         </p>
                     </div>
                     <?php endforeach; ?>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <h2>Quais são as linhas que só aceitam o cartão transporte?</h2>
+                    <ul>
+                        <?php foreach($linhas as $linha) : ?>
+                            <li><?php echo $linha; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
             </div>
             <!-- /.row -->
