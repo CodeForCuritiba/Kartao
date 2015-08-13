@@ -287,8 +287,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                     <?php endforeach; ?>
                 </div>
                 <div class="col-sm-4 text-center">
-           	    	<iframe width="100%" height="240px" src="https://www.youtube.com/embed/W2JtiwAGVdk" frameborder="0" allowfullscreen></iframe>
-
+           	    	<iframe width="100%" height="240px" src="https://www.youtube-nocookie.com/embed/bqrasGbB6Cs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
                     <h2>Quais são as linhas que só aceitam o cartão transporte?</h2>
                     <ul>
                         <?php foreach($linhas as $linha) : ?>
