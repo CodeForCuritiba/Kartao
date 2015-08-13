@@ -198,7 +198,7 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
 
     link = 'http://maps.google.com/maps?&daddr=' + lat + ',' + lng;
     if (myLatlng != defaultLatLng) link = link + '&saddr=' + myLatlng.lat() + ',' + myLatlng.lng();
-    link = '<br><a target="map" href="' + link + '">Ver itinerário</a>';
+    link = '<br><a target="map" href="' + link + '">Como ir</a>';
     
     if (openhours) content = content + '<br/>Aberto ' + openhours;
     content = content + link + '</p>' + '</div>';
