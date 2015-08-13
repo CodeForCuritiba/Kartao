@@ -137,10 +137,9 @@ $linhas = array(
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
 var map;
+var defaultLatLng = new google.maps.LatLng(-25.428954,-49.267137);
+var myLatlng  = defaultLatLng;
 function initialize() {
-  defaultLatLng = new google.maps.LatLng(-25.428954,-49.267137);
-  var myLatlng = defaultLatLng;
-
   var mapOptions = {
     zoom: 11,
     center: myLatlng,
@@ -196,7 +195,13 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
     });
 
     content = '<div id="content"><h3>' + title + '</h3><p>' + address;
-    if (openhours) content = content + '<br/>Aberto ' + openhours + '</p></div>';
+
+    link = 'http://maps.google.com/maps?&daddr=' + lat + ',' + lng;
+    if (myLatlng != defaultLatLng) link = link + '&saddr=' + myLatlng.lat() + ',' + myLatlng.lng();
+    link = '<br><a target="map" href="' + link + '">Ver itinerário</a>';
+    
+    if (openhours) content = content + '<br/>Aberto ' + openhours;
+    content = content + link + '</p>' + '</div>';
 
     var infowindow = new google.maps.InfoWindow({
         content:  content,
@@ -233,25 +238,20 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <!-- Header -->
     <header id="top" class="header">
-        <div class="text-vertical-center">
-            <h1>Cartão Transporte de Curitiba</h1>
-            <h3>Mapa dos lugares aonde comprar ou recarregar seu cartão transporte da URBS</h3>
-            <!--a href="#about" class="btn btn-dark btn-lg">Find Out More</a-->
-            <div id="map-canvas"></div>
-            <div class="row legend">
-                <div class="col-sm-6">
-                    <img src="assets/img/text.png"/>
-                    <p>
-                        Onde emitir o Cartão Transporte Usuário
-                    </p>
-                </div>
-                <div class="col-sm-6">
-                    <img src="assets/img/recycle.png"/>
-                    <p>
-                        Onde carregar o Cartão Transporte Usuário e <br>
-                        comprar e carregar o Cartão Transporte Avulso
-                    </p>
-                </div>
+        <div id="map-canvas"></div>
+        <div class="title">
+            <h1>Mapa dos lugares aonde comprar ou recarregar seu cartão transporte da URBS</h1>
+            <h2>Cartão Transporte de Curitiba</h2>
+        </div>
+        <!--a href="#about" class="btn btn-dark btn-lg">Find Out More</a-->
+        <div class="legend">
+            <div>
+                <img src="assets/img/text.png" data-toggle="tooltip" title="Onde emitir o Cartão Transporte Usuário"/>
+                <span>Onde emitir o Cartão Transporte Usuário</span>
+            </div>
+            <div>
+                <img src="assets/img/recycle.png" data-toggle="tooltip" title="Onde carregar o Cartão Transporte Usuário e comprar e carregar o Cartão Transporte Avulso"/>
+                <span>Onde carregar o Cartão Transporte Usuário e comprar e carregar o Cartão Transporte Avulso</span>
             </div>
         </div>
     </header>
