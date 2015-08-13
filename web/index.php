@@ -140,6 +140,28 @@ var map;
 var defaultLatLng = new google.maps.LatLng(-25.428954,-49.267137);
 var myLatlng  = defaultLatLng;
 function initialize() {
+  if(navigator.geolocation) {
+      success = function(position) {
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        myLatlng = new google.maps.LatLng(lat, lng);
+        map.setCenter(myLatlng);
+        zoom = ((lat > -25.439) && (lat < -25.415) && (lng > -49.275) && (lng < -49.262))?15:13;
+        map.setZoom(zoom);
+
+	    var marker = new google.maps.Marker({
+	        map: map,
+	        position: new google.maps.LatLng(lat,lng),
+	        title: 'Você esta aqui!',
+	        icon: 'assets/img/you.png',
+	    });
+
+      };
+      error = function() { console.log('Geocoding failure'); }
+
+      navigator.geolocation.getCurrentPosition(success,error);
+  }
+
   var mapOptions = {
     zoom: 11,
     center: myLatlng,
@@ -169,20 +191,6 @@ function initialize() {
     }
 ?>
 
-  if(navigator.geolocation) {
-      success = function(position) {
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-        myLatlng = new google.maps.LatLng(lat, lng);
-        map.setCenter(myLatlng);
-        zoom = ((lat > -25.439) && (lat < -25.415) && (lng > -49.275) && (lng < -49.262))?15:13;
-        map.setZoom(zoom);
-      };
-      error = function() { console.log('Geocoding failure'); }
-
-      navigator.geolocation.getCurrentPosition(success,error);
-  }
-
 }
 
 var windowopen;
@@ -196,9 +204,8 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
 
     content = '<div id="content"><h3>' + title + '</h3><p>' + address;
 
-    link = 'http://maps.google.com/maps?&daddr=' + lat + ',' + lng;
-    if (myLatlng != defaultLatLng) link = link + '&saddr=' + myLatlng.lat() + ',' + myLatlng.lng();
-    link = '<br><a target="map" href="' + link + '">Como ir</a>';
+    link = 'http://maps.google.com/maps?dirflg=w&daddr=' + lat + ',' + lng;
+    link = '<br><a class="link-map" target="map" href="' + link + '">Como ir</a>';
     
     if (openhours) content = content + '<br/>Aberto ' + openhours;
     content = content + link + '</p>' + '</div>';
@@ -206,6 +213,12 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
     var infowindow = new google.maps.InfoWindow({
         content:  content,
     });
+
+	google.maps.event.addListener(infowindow, 'domready', function() {
+        $('.link-map').each(function() {
+        	this.href = this.href + '&saddr=' + myLatlng.lat() + ',' + myLatlng.lng();
+        });
+	});
 
     google.maps.event.addListener(marker, 'click', function() {
         if (windowopen) windowopen.close();
@@ -255,7 +268,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
             </div>
         </div>
     </header>
-
+    
     <section id="places" class="places">
         <div class="container">
             <div class="row">
@@ -274,6 +287,16 @@ google.maps.event.addDomListener(window, 'load', initialize);
                     <?php endforeach; ?>
                 </div>
                 <div class="col-sm-4 text-center">
+           	    	<iframe width="100%" height="240px" src="https://www.youtube.com/embed/W2JtiwAGVdk" frameborder="0" allowfullscreen></iframe>
+
+                    <h2>Quais são as linhas que só aceitam o cartão transporte?</h2>
+                    <ul>
+                        <?php foreach($linhas as $linha) : ?>
+                            <li><?php echo $linha; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <div class="col-sm-4 text-center">
                     <h2>Onde carregar o Cartão Transporte Usuário?</h2>
                     <h2>Onde comprar e carregar o Cartão Transporte Avulso?</h2>
                     <?php foreach ($vendas as $title => $place) : ?>
@@ -287,14 +310,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
                         </p>
                     </div>
                     <?php endforeach; ?>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <h2>Quais são as linhas que só aceitam o cartão transporte?</h2>
-                    <ul>
-                        <?php foreach($linhas as $linha) : ?>
-                            <li><?php echo $linha; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
                 </div>
             </div>
             <!-- /.row -->
