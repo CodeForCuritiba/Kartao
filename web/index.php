@@ -36,7 +36,7 @@ $vendas = array(
 'Travessa Moreira Garcez' => array('Em frente à galeria Tobias de Macedo',-25.428872, -49.270421),
 '13 de Maio' => array('Na esquina das ruas Barão do Cerro Azul e 13 de Maio',-25.426942, -49.270775),
 'Arcadas do Pelourinho' => array('Na praça Generoso Marques, em frente a Loja Riachuelo',-25.429892, -49.270780),
-'Banca Bom Jesus' => array('Na Praça Rui Barbosa, perto da Rua 24 de Maio',-25.436540, -49.274425),
+'Banca Bom Jesus' => array('Na Praça Rui Barbosa, perto da Rua 24 de Maio',-25.436688, -49.274118),
 'Banca Bom Jesus II' => array('Na Praça Rui Barbosa, perto da Voluntários da Pátria',-25.434816, -49.272799),
 'Banca Revistaria Cultura' => array('Na Praça Rui Barbosa, perto da Desembargador Westphalen',-25.434884, -49.272185),
 'Banca da Cátia' => array('Na Praça Rui Barbosa, em frente ao Colégio São José',-25.435879, -49.274217),
@@ -287,7 +287,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
                     <?php endforeach; ?>
                 </div>
                 <div class="col-sm-4 text-center">
-           	    	<iframe width="100%" height="240px" src="https://www.youtube-nocookie.com/embed/bqrasGbB6Cs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+           	    	<iframe width="100%" height="240px" src="https://www.youtube-nocookie.com/embed/W2JtiwAGVdk?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
                     <h2>Quais são as linhas que só aceitam o cartão transporte?</h2>
                     <ul>
                         <?php foreach($linhas as $linha) : ?>
