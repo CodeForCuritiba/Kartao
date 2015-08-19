@@ -61,13 +61,10 @@ Esse funcionalidade esta ligada a "Abrir uma conta usuário"
 ## recarrega express / automática do cartão
 Talvez um dia conseguiremos fazer isso.
 
-#participantes
 ...
 
-#membros ativos
-...
-
-#créditos
+#agradecemos todos os participantes
+*quem já participou e o que fez*
 ###infra
 ...
 
@@ -76,4 +73,8 @@ Talvez um dia conseguiremos fazer isso.
 
 ###mapa
 ...
+
+#membros ativos
+...
+
 
