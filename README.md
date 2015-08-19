@@ -17,24 +17,29 @@ A primeira versão do site esta feito em PHP + HTML + Javascript e esta hospedad
 
 ##SEO
 O "nerf de la guerre" (nervo da guerra): se os nossos usuários não conseguem acessar o Kartao não adianta continuar
+
 **Participantes:**
 
 ##framework JS
 Na ideia de fazer uma *single page application*, gostariamos de mudar o framework para o uso de *AngularJS* ou *BackboneJS* com um servidor *node.js* e um banco de dado *MongoDB*
+
 **Participantes:**
 
 ##thinking design
 É preciso pensar sobre a ergonomia do site (simplicidade e qualidade das informações), a otimização para uso nos smartphones (app like) e a criação de elementos gráficos (logo, icons do mapa).
+
 **Participantes:** thierry
 
 ##dev google maps
 Gostariamos de destacar para o usuário o lugar mais próximo para fazer um cartão avulso ou recarregar um cartão usuário ou avulso.
+
 **Participantes:**
 
 ##user feedback
 É primordial para um serviço online ter umas ferramentas para receber o feedback dos usuários e o seus interesses. Por isso validamos as seguintes funcionalidades:
  - mandar um comentário sobre um lugar definido no mapa com a possibilidade de mandar também sua posição no caso há um error de localização
  - mandar seu email quando uma funcionalidade não esta ainda disponível (como ver o saldo da seu cartão ou recarga express).
+
 **Participantes:**
 
 #roadmap
