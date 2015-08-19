@@ -1,32 +1,74 @@
-# php-getting-started
+#Kartao
+Melhorar a vida do usuários do Cartão Transporte de Curitiba
+https://github.com/Thithi32/Kartao
 
-A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
+#features
+*O que já tem* 
 
-This application supports the [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php) article - check it out.
+###Um mapa com 
+ - os lugares onde carregar o seu cartão transporte avulso ou usuário
+ - os lugares onde emitir um cartão avulso
+ - os lugares onde emitir um cartão transporte usuário
 
-## Running Locally
+A primeira versão do site esta feito em PHP + HTML + Javascript e esta hospedado no cloud [Heroku](http://heroku.com).
 
-Make sure you have PHP, Apache and Composer installed.  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
+#on the grill
+*Queremos trabalhar nisso*
 
-```sh
-$ git clone git@github.com:heroku/php-getting-started.git # or clone your own fork
-$ cd php-getting-started
-$ composer update
-$ foreman start web
-```
+##SEO
+O "nerf de la guerre" (nervo da guerra): se os nossos usuários não conseguem acessar o Kartao não adianta continuar
+**Participantes:**
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+##framework JS
+Na ideia de fazer uma *single page application*, gostariamos de mudar o framework para o uso de *AngularJS* ou *BackboneJS* com um servidor *node.js* e um banco de dado *MongoDB*
+**Participantes:**
 
-## Deploying to Heroku
+##thinking design
+É preciso pensar sobre a ergonomia do site (simplicidade e qualidade das informações), a otimização para uso nos smartphones (app like) e a criação de elementos gráficos (logo, icons do mapa).
+**Participantes:** thierry
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
+##dev google maps
+Gostariamos de destacar para o usuário o lugar mais próximo para fazer um cartão avulso ou recarregar um cartão usuário ou avulso.
+**Participantes:**
 
-## Documentation
+##user feedback
+É primordial para um serviço online ter umas ferramentas para receber o feedback dos usuários e o seus interesses. Por isso validamos as seguintes funcionalidades:
+ - mandar um comentário sobre um lugar definido no mapa com a possibilidade de mandar também sua posição no caso há um error de localização
+ - mandar seu email quando uma funcionalidade não esta ainda disponível (como ver o saldo da seu cartão ou recarga express).
+**Participantes:**
 
-For more information about using PHP on Heroku, see these Dev Center articles:
+#roadmap
+*o que esta previsto*
+##dados da URBS
+É previsto importar o dados da URBS.
 
-- [PHP on Heroku](https://devcenter.heroku.com/categories/php)
+##dev google maps
+ - Ver itinerários de ônibus sem Cartão Transporte
+ - Ver itinerários de ônibus a pé para cada lugar do mapa
+
+##consultar saldo do cartão
+
+##abrir uma conta usuário
+
+##alertas na falta de crédito no cartão
+Esse funcionalidade esta ligada a "Abrir uma conta usuário"
+
+## recarrega express / automática do cartão
+Talvez um dia conseguiremos fazer isso.
+
+#participantes
+...
+
+#membros ativos
+...
+
+#créditos
+###infra
+...
+
+###design
+...
+
+###mapa
+...
+
