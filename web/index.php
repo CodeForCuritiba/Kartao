@@ -244,9 +244,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <nav id="sidebar-wrapper">
     	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
         <div class="brand">
-            <h1><a href="#top">Kartao.com.br</a></h1>
+            <h1>Kartao.com.br</h1>
             <p>
-            	Cartão Transporte Usuário, Cartão Transporte Avulso, onde emitir e carragar esses cartões.
+            	Cartão Transporte Usuário, <br/>Cartão Transporte Avulso, <br/>onde emitir e carragar <br/>o seu cartão transporte.
             </p>
         </div>
         <div class="footer">
