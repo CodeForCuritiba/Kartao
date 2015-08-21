@@ -209,7 +209,7 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
     content = '<div id="content"><h3>' + title + '</h3><p>' + address;
 
     link = 'http://maps.google.com/maps?dirflg=w&daddr=' + lat + ',' + lng;
-    link = '<br><a class="link-map" target="map" href="' + link + '">Como ir</a>';
+    link = '<br><a class="link-map" target="map" href="' + link + '">Como ir?</a>';
     
     if (openhours) content = content + '<br/>Aberto ' + openhours;
     content = content + link + '</p>' + '</div>';
@@ -250,7 +250,17 @@ google.maps.event.addDomListener(window, 'load', initialize);
             </p>
         </div>
         <div class="footer">
-        	<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba" />
+        	<div>
+        		Sobre o cartão transporte:
+        		<a href="http://www.urbs.curitiba.pr.gov.br/utilidades/cartao-transporte" target="urbs">
+        			<img src="assets/img/urbs.png" class="img_urbs" />
+        		</a>
+        	</div>
+        	<div>
+        		<a href="http://www.codeforamerica.org/brigade/Code-for-Curitiba" target="codeforcuritiba">
+	        		<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba" />
+        		</a>
+        	</div>
         </div>
     </nav>
 

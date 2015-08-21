@@ -96,8 +96,13 @@ body { margin:0; padding:0; }
 
 #sidebar-wrapper .footer .img_codeforcuritiba { width: 70%; }
 
+#sidebar-wrapper .footer .img_urbs {
+    width: 50px;
+    margin: 0 10px;
+}
+
 @media(min-width:768px) {
-	.header { width: 75%; }
+	.header { width: 70%; }
 	.header .legend {
 		text-align: center;
 		width: auto;
@@ -106,7 +111,7 @@ body { margin:0; padding:0; }
 
 	#sidebar-wrapper.active, #sidebar-wrapper {
 		margin-right: 0;
-		width: 25%;
+		width: 30%;
 	}
 
 	#menu-close { display:none; }
