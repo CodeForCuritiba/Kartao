@@ -3,13 +3,20 @@ body {
 	background-color: #333;
 }
 
+html, body { overflow: hidden; height: 100% }
+body { margin:0; padding:0; }
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+
 .header {
 	background-image: none;
 }
 
 #map-canvas {
 	position: absolute;
-    height: 90%;
+    height: 100%;
     width: 100%;
     top: 0;
     left: 0;
@@ -58,14 +65,55 @@ body {
 	color:#333;
 }
 
+#sidebar-wrapper {
+	background: white;
+	color: #222;
+	border-left: 1px solid #222;	
+}
+
+#sidebar-wrapper a {
+	color: #222;
+}
+
+#sidebar-wrapper a:hover {
+	color: #999;
+}
+
+#menu-toggle {
+	z-index: 10;
+}
+
+#sidebar-wrapper .brand {
+    padding: 0 10px 10px;
+}
+
+#sidebar-wrapper .footer {
+	position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+
+#sidebar-wrapper .footer .img_codeforcuritiba { width: 70%; }
 
 @media(min-width:768px) {
-	#map-canvas { height: 100% }
+	.header { width: 75%; }
 	.header .legend {
 		text-align: center;
 		width: auto;
 	}
 	.header .legend span { display: none; }
+
+	#sidebar-wrapper {
+		margin-right: 0;
+		width: 25%;
+		
+	}
+
+	#menu-close { display:none; }
+
+	#sidebar-wrapper .brand {
+		font-size: 1.2em;
+	}	
 }
 
 @media(min-width:1024px) {

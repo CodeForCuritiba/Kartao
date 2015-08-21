@@ -169,7 +169,11 @@ function initialize() {
     panControl: false,
     scaleControl: false,
     scrollwheel: false,
-  }
+	mapTypeControlOptions: {
+		style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        	position: google.maps.ControlPosition.BOTTOM_RIGHT
+	},
+}
 /*
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     mapOptions['draggable'] = false
@@ -236,18 +240,19 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <body>
 
     <!-- Navigation -->
-    <!--a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <a id="menu-toggle" href="#" class="btn btn-light btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-            <li class="sidebar-brand">
-                <a href="#top"  onclick = $("#menu-close").click(); >Kartão</a>
-            </li>
-            <li>
-                <a href="#contact" onclick = $("#menu-close").click(); >Contato</a>
-            </li>
-        </ul>
-    </nav-->
+    	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+        <div class="brand">
+            <h1><a href="#top">Kartao.com.br</a></h1>
+            <p>
+            	Cartão Transporte Usuário, Cartão Transporte Avulso, onde emitir e carragar esses cartões.
+            </p>
+        </div>
+        <div class="footer">
+        	<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba" />
+        </div>
+    </nav>
 
     <!-- Header -->
     <header id="top" class="header">
@@ -257,16 +262,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
             <h2>Cartão Transporte de Curitiba</h2>
         </div>
         <!--a href="#about" class="btn btn-dark btn-lg">Find Out More</a-->
-        <div class="legend">
-            <div>
-                <img src="assets/img/text.png" data-toggle="tooltip" title="Onde emitir o Cartão Transporte Usuário"/>
-                <span>Onde emitir o Cartão Transporte Usuário</span>
-            </div>
-            <div>
-                <img src="assets/img/recycle.png" data-toggle="tooltip" title="Onde carregar o Cartão Transporte Usuário e comprar e carregar o Cartão Transporte Avulso"/>
-                <span>Onde carregar o Cartão Transporte Usuário e comprar e carregar o Cartão Transporte Avulso</span>
-            </div>
-        </div>
     </header>
     
     <section id="places" class="places">
