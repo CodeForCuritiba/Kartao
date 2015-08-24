@@ -86,6 +86,8 @@ body { margin:0; padding:0; }
 	color: #999;
 }
 
+#sidebar-wrapper #menu-close { display: none; }
+
 #menu-toggle {
 	z-index: 10;
 }
