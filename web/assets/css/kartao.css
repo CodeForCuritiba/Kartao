@@ -100,6 +100,7 @@ body { margin:0; padding:0; }
     bottom: 0;
     text-align: right;
     width: 100%;
+    background-color: white;
 }
 
 #sidebar-wrapper .footer .img_codeforcuritiba { width: 170px; }

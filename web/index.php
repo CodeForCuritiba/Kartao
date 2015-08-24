@@ -229,6 +229,12 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
         infowindow.open(map,marker);
         windowopen = infowindow;
     });
+
+	map.addListener('click', function(e) {
+		$("#menu-close").click();    	
+	});
+	
+	$('#sidebar-wrapper').on('swiperight',function(e) { console.log('toto'); $("#menu-close").click(); })
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -241,7 +247,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <!-- Navigation -->
     <a id="menu-toggle" href="#" class="btn btn-light btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <nav id="sidebar-wrapper">
+    <nav id="sidebar-wrapper" class="active">
     	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
         <div class="brand">
             <h1><img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="200px" /></h1>
@@ -359,7 +365,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     // Closes the sidebar menu
     $("#menu-close").click(function(e) {
         e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("active");
+        $("#sidebar-wrapper").removeClass("active");
     });
 
     // Opens the sidebar menu
