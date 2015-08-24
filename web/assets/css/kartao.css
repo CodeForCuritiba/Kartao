@@ -58,7 +58,14 @@ body { margin:0; padding:0; }
 	
 }
 .header .legend > div { padding: 5px; }
-.header .legend span { }
+
+.header .logo {
+    position: absolute;
+    z-index: 11;
+    top: 10px;
+    left: 10px;
+}
+
 #places {
 	padding: 50px 0;
 	background-color: white;
@@ -91,14 +98,19 @@ body { margin:0; padding:0; }
 #sidebar-wrapper .footer {
 	position: absolute;
     bottom: 0;
-    text-align: center;
+    text-align: right;
+    width: 100%;
 }
 
-#sidebar-wrapper .footer .img_codeforcuritiba { width: 70%; }
+#sidebar-wrapper .footer .img_codeforcuritiba { width: 170px; }
 
 #sidebar-wrapper .footer .img_urbs {
     width: 50px;
     margin: 0 10px;
+}
+
+#sidebar-wrapper .footer table {
+	width: 100%;
 }
 
 @media(min-width:768px) {
@@ -112,6 +124,7 @@ body { margin:0; padding:0; }
 	#sidebar-wrapper.active, #sidebar-wrapper {
 		margin-right: 0;
 		width: 30%;
+		right: 0;
 	}
 
 	#menu-close { display:none; }

@@ -244,28 +244,43 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <nav id="sidebar-wrapper">
     	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
         <div class="brand">
-            <h1>Kartao</h1>
+            <h1><img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="200px" /></h1>
             <p>
-            	Cartão Transporte Usuário, <br/>Cartão Transporte Avulso, <br/>onde emitir e carregar <br/>o seu cartão transporte.
+            	<br/>Cartão Transporte Usuário, <br/>Cartão Transporte Avulso, <br/>onde emitir ou carregar o seu.
             </p>
         </div>
         <div class="footer">
-        	<div>
-        		Sobre o cartão transporte:
-        		<a href="http://www.urbs.curitiba.pr.gov.br/utilidades/cartao-transporte" target="urbs">
-        			<img src="assets/img/urbs.png" class="img_urbs" />
-        		</a>
-        	</div>
-        	<div>
-        		<a href="http://www.codeforamerica.org/brigade/Code-for-Curitiba" target="codeforcuritiba">
-	        		<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba" />
-        		</a>
-        	</div>
+        	<table>
+        		<tr>
+        			<td>
+        				Saiba mais sobre o cartão transporte
+        			</td>
+        			<td>
+		        		<a href="http://www.urbs.curitiba.pr.gov.br/utilidades/cartao-transporte" target="urbs">
+		        			<img src="assets/img/urbs.png" class="img_urbs" title="URBS" alt="URBS"/>
+		        		</a>
+        			</td>
+        		</tr>
+        	</table>
+        	<table>
+        		<tr>
+        			<td>
+        				Com a colaboração de 	
+        			</td>
+        			<td>
+		        		<a href="http://www.codeforamerica.org/brigade/Code-for-Curitiba" target="codeforcuritiba">
+			        		<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba" 
+			        			title="Code For Curitiba" alt="Code For Curitiba"/>
+		        		</a>
+        			</td>
+        		</tr>
+        	</table>
         </div>
     </nav>
 
     <!-- Header -->
     <header id="top" class="header">
+    	<div class="logo"><img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="120px" /></div>
         <div id="map-canvas"></div>
         <div class="title">
             <h1>Mapa dos lugares aonde comprar ou recarregar seu cartão transporte da URBS</h1>
