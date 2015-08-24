@@ -79,10 +79,6 @@ $linhas = array(
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba">
-    <meta name="author" content="Kartão.com.br">
-    <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário, banca">
-
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
@@ -102,16 +98,20 @@ $linhas = array(
     <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+	<!-- site description -->
+    <title>Ver o mapa do Cartão Transporte de Curitiba: onde emitir e carregar o seu cartão.</title>
+    <meta name="description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba">
+    <meta name="author" content="Kartao.com.br">
+    <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário, banca">
+
     <!-- meta OG -->    
-    <meta property="og:title" content="Cartão Transporte de Curitiba"/>
-    <meta property="og:site_name" content="Cartão.com.br"/>  
+    <meta property="og:title" content="Ver o mapa do Cartão Transporte de Curitiba: onde emitir e carregar o seu"/>
+    <meta property="og:site_name" content="Kartao.com.br"/>  
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba"/> 
     <?php $domain = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:$_SERVER['SERVER_NAME']; ?>
     <meta property="og:url" content="http://<?php echo $domain; ?>" />
     <meta property="og:image" content="http://<?php echo $domain; ?>/assets/img/onibus.jpg"/>
-
-    <title>Cartão Transporte de Curitiba</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -146,7 +146,7 @@ function initialize() {
         lng = position.coords.longitude;
         myLatlng = new google.maps.LatLng(lat, lng);
         map.setCenter(myLatlng);
-        zoom = ((lat > -25.439) && (lat < -25.415) && (lng > -49.275) && (lng < -49.262))?15:13;
+        zoom = ((lat > -25.439) && (lat < -25.415) && (lng > -49.275) && (lng < -49.262))?16:13;
         map.setZoom(zoom);
 
 	    var marker = new google.maps.Marker({
