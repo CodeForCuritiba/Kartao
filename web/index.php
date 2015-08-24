@@ -230,11 +230,12 @@ function drawMarker(title,address,lat,lng,openhours,icon) {
         windowopen = infowindow;
     });
 
-	map.addListener('click', function(e) {
+	function closeSideBar(e) {
 		$("#menu-close").click();    	
-	});
+	}
+	map.addListener('click', closeSideBar);
 	
-	$('#sidebar-wrapper').on('swiperight',function(e) { console.log('toto'); $("#menu-close").click(); })
+	$('#sidebar-wrapper').on('swiperight',closeSideBar)
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -356,6 +357,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <!-- jQuery -->
     <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery.mobile.custom.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
