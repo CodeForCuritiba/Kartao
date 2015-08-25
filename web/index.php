@@ -111,7 +111,7 @@ $linhas = array(
     <meta property="og:description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba"/> 
     <?php $domain = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:$_SERVER['SERVER_NAME']; ?>
     <meta property="og:url" content="http://<?php echo $domain; ?>" />
-    <meta property="og:image" content="http://<?php echo $domain; ?>/assets/img/onibus.jpg"/>
+    <meta property="og:image" content="http://<?php echo $domain; ?>/assets/img/kartao.jpg"/>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
