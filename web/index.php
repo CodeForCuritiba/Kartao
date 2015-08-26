@@ -251,13 +251,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <nav id="sidebar-wrapper" class="active">
     	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
         <div class="brand">
-            <h1><img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="200px" /></h1>
-            <p>
-            	<br/>Cartão Transporte Usuário, <br/>Cartão Transporte Avulso, <br/>onde emitir ou carregar o seu.
-            </p>
+            <h2>Cartão Transporte de Curitiba</h2>
+            <div>
+	        	<img src="assets/img/venda.png"  class="pull-left"/>
+	        	<div>
+	        		Onde comprar e recarregar cartões avulsos ou recarregar cartões usuários
+	        	</div>
+            </div>
+            <div>
+	        	<img src="assets/img/posto.png"  class="pull-left"/>
+	        	<div>
+	        		Onde emitir seu cartão transporte usuário
+	        	</div>
+            </div>
         </div>
         <div class="footer">
-        	<table>
+        	<table class="block_urbs">
         		<tr>
         			<td>
         				Saiba mais sobre o cartão transporte
@@ -269,7 +278,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         			</td>
         		</tr>
         	</table>
-        	<table>
+        	<table class="block_cfc">
         		<tr>
         			<td>
         				Com a colaboração de 	

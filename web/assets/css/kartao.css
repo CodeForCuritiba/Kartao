@@ -94,16 +94,35 @@ body { margin:0; padding:0; }
 
 #sidebar-wrapper .brand {
     padding: 0 10px 10px;
-    text-align: right;
+}
+
+#sidebar-wrapper .brand h2 {
+	border-bottom: 1px dashed #ccc;
+	font-size: 24px;
+}
+
+#sidebar-wrapper .brand > div {
+	float: left;
+	margin: 10px 0;
+	
+	line-height:inherit;
+}
+#sidebar-wrapper .brand img {
+	margin-right: 10px;
 }
 
 #sidebar-wrapper .footer {
+	display: none;
+	border-top: 1px dashed #ccc;
+	padding: 10px;
 	position: absolute;
     bottom: 0;
     text-align: right;
     width: 100%;
     background-color: white;
 }
+
+#sidebar-wrapper .footer .block_cfc { display: none; }
 
 #sidebar-wrapper .footer .img_codeforcuritiba { width: 170px; }
 
@@ -132,12 +151,21 @@ body { margin:0; padding:0; }
 
 	#menu-close { display:none; }
 
-	#sidebar-wrapper .brand {
-		font-size: 1.2em;
-	}	
 }
 
-@media(min-width:1024px) {
+@media(min-width: 850px) {
+	#sidebar-wrapper .brand { font-size: 1.2em; }
+	#sidebar-wrapper .brand h2 { font-size: 30px; }
+
+}
+
+@media(min-height: 430px) {
+	#sidebar-wrapper .footer .block_cfc { display: table; }
+}
+
+
+@media(min-height: 330px) {
+	#sidebar-wrapper .footer { display: block; }
 }
 
 li {
