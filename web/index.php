@@ -184,26 +184,28 @@ function initialize() {
 <?php 
     foreach ($postos as $title => $posto) {
         $icon = 'assets/img/posto.png';
-        echo 'drawMarker("'.$title.'","'.$posto[0],'",'.$posto[1].','.$posto[2].','.(isset($posto[3])?'"'.$posto[3].'"':null).',"'.$icon.'");';
+        echo 'drawMarker("'.$title.'","'.$posto[0],'",'.$posto[1].','.$posto[2].','.(isset($posto[3])?'"'.$posto[3].'"':null).',"'.$icon.'",50);';
     }
 ?>
 
 <?php 
     foreach ($vendas as $title => $venda) {
         $icon = 'assets/img/venda.png';
-        echo 'drawMarker("'.$title.'","'.$venda[0],'",'.$venda[1].','.$venda[2].','.(isset($venda[3])?'"'.$venda[3].'"':'null').',"'.$icon.'");';
+        echo 'drawMarker("'.$title.'","'.$venda[0],'",'.$venda[1].','.$venda[2].','.(isset($venda[3])?'"'.$venda[3].'"':'null').',"'.$icon.'",40);';
     }
 ?>
 
 }
 
 var windowopen;
-function drawMarker(title,address,lat,lng,openhours,icon) {
+function drawMarker(title,address,lat,lng,openhours,icon,size) {
+    var myIcon = new google.maps.MarkerImage(icon, null, null, null, new google.maps.Size(size,size*1.45));
+myIcon = icon;
     var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(lat,lng),
         title: title,
-        icon: icon,
+        icon: myIcon,
     });
 
     content = '<div id="content"><h3>' + title + '</h3><p>' + address;
@@ -296,7 +298,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <!-- Header -->
     <header id="top" class="header">
-    	<div class="logo"><img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="120px" /></div>
+    	<div class="logo"><img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="200px" /></div>
         <div id="map-canvas"></div>
         <div class="title">
             <h1>Mapa dos lugares aonde comprar ou recarregar seu cartão transporte da URBS</h1>
