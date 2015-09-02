@@ -99,13 +99,13 @@ $linhas = array(
     <meta name="theme-color" content="#ffffff">
 
 	<!-- site description -->
-    <title>Ver o mapa do Cartão Transporte de Curitiba: onde emitir e carregar o seu cartão.</title>
+    <title>Ver o mapa do cartão trnasporte para os ônibus de Curitiba: onde emitir e carregar o seu cartão.</title>
     <meta name="description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba">
     <meta name="author" content="Kartao.com.br">
     <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário, banca">
 
     <!-- meta OG -->    
-    <meta property="og:title" content="Ver o mapa do Cartão Transporte de Curitiba: onde emitir e carregar o seu"/>
+    <meta property="og:title" content="Ver o mapa do cartão trnasporte para os ônibus de Curitiba: onde emitir e carregar o seu cartão."/>
     <meta property="og:site_name" content="Kartao.com.br"/>  
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba"/> 
@@ -303,6 +303,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div class="footer">
         	<div class="share">
 	        	<div class="fb-share-button" data-href="http://kartao.com.br" data-layout="button_count"></div>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://kartao.com.br" data-text="Mapa para comprar e recarregar cartão transporte em Curitiba" data-via="KartaoCuritiba">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
         	</div>
         	<div class="references">
 	        	<table class="block_urbs">
