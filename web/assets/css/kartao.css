@@ -92,13 +92,20 @@ body { margin:0; padding:0; }
 	z-index: 10;
 }
 
+
+#sidebar-wrapper .logo {
+	margin-bottom: 15px;
+	width: 80%
+}
 #sidebar-wrapper .brand {
     padding: 0 10px 10px;
 }
 
-#sidebar-wrapper .brand h2 {
-	border-bottom: 1px dashed #ccc;
-	font-size: 24px;
+#sidebar-wrapper .brand h3 {
+    display: block;
+    width: 100%;
+    border-bottom: 1px dashed #ccc;
+    font-size: 16px;
 }
 
 #sidebar-wrapper .brand > div {

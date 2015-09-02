@@ -184,23 +184,23 @@ function initialize() {
 <?php 
     foreach ($postos as $title => $posto) {
         $icon = 'assets/img/posto.png';
-        echo 'drawMarker("'.$title.'","'.$posto[0],'",'.$posto[1].','.$posto[2].','.(isset($posto[3])?'"'.$posto[3].'"':null).',"'.$icon.'",50);';
+        echo 'drawMarker("'.$title.'","'.$posto[0],'",'.$posto[1].','.$posto[2].','.(isset($posto[3])?'"'.$posto[3].'"':null).',"'.$icon.'",34,49,0.7);';
     }
 ?>
 
 <?php 
     foreach ($vendas as $title => $venda) {
         $icon = 'assets/img/venda.png';
-        echo 'drawMarker("'.$title.'","'.$venda[0],'",'.$venda[1].','.$venda[2].','.(isset($venda[3])?'"'.$venda[3].'"':'null').',"'.$icon.'",40);';
+        echo 'drawMarker("'.$title.'","'.$venda[0],'",'.$venda[1].','.$venda[2].','.(isset($venda[3])?'"'.$venda[3].'"':'null').',"'.$icon.'",28,55,0.8);';
     }
 ?>
 
 }
 
 var windowopen;
-function drawMarker(title,address,lat,lng,openhours,icon,size) {
-    var myIcon = new google.maps.MarkerImage(icon, null, null, null, new google.maps.Size(size,size*1.45));
-myIcon = icon;
+function drawMarker(title,address,lat,lng,openhours,icon,width,height,ratio) {
+    var myIcon = new google.maps.MarkerImage(icon, null, null, null, new google.maps.Size(width*ratio,height*ratio));
+//myIcon = icon;
     var marker = new google.maps.Marker({
         map: map,
         position: new google.maps.LatLng(lat,lng),
@@ -248,12 +248,21 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   <body>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.4&appId=212514508812493";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
     <!-- Navigation -->
     <a id="menu-toggle" href="#" class="btn btn-light btn-lg toggle"><i class="fa fa-bars"></i></a>
     <nav id="sidebar-wrapper" class="active">
     	<a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
         <div class="brand">
-            <h2>Cartão Transporte de Curitiba</h2>
+			<img src="assets/img/kartao.png" title="Kartão" alt="Kartão" class="logo" />
             <div>
 	        	<img src="assets/img/venda.png"  class="pull-left"/>
 	        	<div>
@@ -268,6 +277,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
             </div>
         </div>
         <div class="footer">
+        	<div class="fb-share-button" data-href="http://kartao.com.br" data-layout="box_count"></div>
         	<table class="block_urbs">
         		<tr>
         			<td>
@@ -275,7 +285,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         			</td>
         			<td>
 		        		<a href="http://www.urbs.curitiba.pr.gov.br/utilidades/cartao-transporte" target="urbs">
-		        			<img src="assets/img/urbs.png" class="img_urbs" title="URBS" alt="URBS"/>
+		        			<img src="assets/img/urbs.png" class="img_urbs img_legend" title="URBS" alt="URBS"/>
 		        		</a>
         			</td>
         		</tr>
@@ -287,7 +297,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         			</td>
         			<td>
 		        		<a href="http://www.codeforamerica.org/brigade/Code-for-Curitiba" target="codeforcuritiba">
-			        		<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba" 
+			        		<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba img_legend" 
 			        			title="Code For Curitiba" alt="Code For Curitiba"/>
 		        		</a>
         			</td>
@@ -298,7 +308,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <!-- Header -->
     <header id="top" class="header">
-    	<div class="logo"><img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="200px" /></div>
         <div id="map-canvas"></div>
         <div class="title">
             <h1>Mapa dos lugares aonde comprar ou recarregar seu cartão transporte da URBS</h1>
