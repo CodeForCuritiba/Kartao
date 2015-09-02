@@ -99,13 +99,13 @@ $linhas = array(
     <meta name="theme-color" content="#ffffff">
 
 	<!-- site description -->
-    <title>Ver o mapa do cartão trnasporte para os ônibus de Curitiba: onde emitir e carregar o seu cartão.</title>
+    <title>Ver o mapa do cartão transporte para os ônibus de Curitiba: onde emitir e carregar o seu cartão.</title>
     <meta name="description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba">
     <meta name="author" content="Kartao.com.br">
     <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário, banca">
 
     <!-- meta OG -->    
-    <meta property="og:title" content="Ver o mapa do cartão trnasporte para os ônibus de Curitiba: onde emitir e carregar o seu cartão."/>
+    <meta property="og:title" content="Ver o mapa do cartão tanasporte para os ônibus de Curitiba: onde emitir e carregar o seu cartão."/>
     <meta property="og:site_name" content="Kartao.com.br"/>  
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba"/> 
