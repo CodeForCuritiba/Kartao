@@ -110,8 +110,11 @@ $linhas = array(
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba"/> 
     <?php $domain = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:$_SERVER['SERVER_NAME']; ?>
-    <meta property="og:url" content="http://<?php echo $domain; ?>" />
-    <meta property="og:image" content="http://<?php echo $domain; ?>/assets/img/kartao.jpg"/>
+    <meta property="og:url" content="http://kartao.com.br" />
+    <meta property="og:image" content="http://kartao.com.br/assets/img/kartao.jpg"/>
+
+	<!-- Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Jura:400,600' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -162,6 +165,23 @@ function initialize() {
       navigator.geolocation.getCurrentPosition(success,error);
   }
 
+var myStyles =[
+    {
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+              { visibility: "off" }
+        ]
+    },
+	{
+	    featureType: "landscape.man_made",
+	    elementType: "labels",
+	    stylers: [
+	      { visibility: "off" }
+	    ]
+	}    
+];
+
   var mapOptions = {
     zoom: 11,
     center: myLatlng,
@@ -173,6 +193,7 @@ function initialize() {
 		style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
         	position: google.maps.ControlPosition.BOTTOM_RIGHT
 	},
+	styles: myStyles,
 }
 /*
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -264,50 +285,59 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <div class="brand">
 			<img src="assets/img/kartao.png" title="Kartão" alt="Kartão" class="logo" />
             <div>
-	        	<img src="assets/img/venda.png"  class="pull-left"/>
-	        	<div>
-	        		Onde comprar e recarregar cartões avulsos ou recarregar cartões usuários
-	        	</div>
-            </div>
-            <div>
-	        	<img src="assets/img/posto.png"  class="pull-left"/>
-	        	<div>
-	        		Onde emitir seu cartão transporte usuário
-	        	</div>
+            	<p>Ache fácil os lugares onde:</p>
+            	<table class="legend">
+            		<tbody>
+            			<tr>
+            				<td><img src="assets/img/venda.png"/></td>
+            				<td>comprar e recarregar cartões avulsos ou cartões usuários</td>
+            			</tr>
+            			<tr>
+            				<td><img src="assets/img/posto.png"/></td>
+            				<td>emitir seu cartão transporte usuário</td>
+            			</tr>
+            		</tbody>
+            	</table>
             </div>
         </div>
         <div class="footer">
-        	<div class="fb-share-button" data-href="http://kartao.com.br" data-layout="box_count"></div>
-        	<table class="block_urbs">
-        		<tr>
-        			<td>
-        				Saiba mais sobre o cartão transporte
-        			</td>
-        			<td>
-		        		<a href="http://www.urbs.curitiba.pr.gov.br/utilidades/cartao-transporte" target="urbs">
-		        			<img src="assets/img/urbs.png" class="img_urbs img_legend" title="URBS" alt="URBS"/>
-		        		</a>
-        			</td>
-        		</tr>
-        	</table>
-        	<table class="block_cfc">
-        		<tr>
-        			<td>
-        				Com a colaboração de 	
-        			</td>
-        			<td>
-		        		<a href="http://www.codeforamerica.org/brigade/Code-for-Curitiba" target="codeforcuritiba">
-			        		<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba img_legend" 
-			        			title="Code For Curitiba" alt="Code For Curitiba"/>
-		        		</a>
-        			</td>
-        		</tr>
-        	</table>
+        	<div class="share">
+	        	<div class="fb-share-button" data-href="http://kartao.com.br" data-layout="button_count"></div>
+        	</div>
+        	<div class="references">
+	        	<table class="block_urbs">
+	        		<tr>
+	        			<td>
+	        				Saiba mais sobre o cartão transporte
+	        			</td>
+	        			<td>
+			        		<a href="http://www.urbs.curitiba.pr.gov.br/utilidades/cartao-transporte" target="urbs">
+			        			<img src="assets/img/urbs.png" class="img_urbs img_legend" title="URBS" alt="URBS"/>
+			        		</a>
+	        			</td>
+	        		</tr>
+	        	</table>
+	        	<table class="block_cfc">
+	        		<tr>
+	        			<td>
+	        				Com a colaboração de 	
+	        			</td>
+	        			<td>
+			        		<a href="http://www.codeforamerica.org/brigade/Code-for-Curitiba" target="codeforcuritiba">
+				        		<img src="assets/img/codeforcuritiba.png" class="img_codeforcuritiba img_legend" 
+				        			title="Code For Curitiba" alt="Code For Curitiba"/>
+			        		</a>
+	        			</td>
+	        		</tr>
+	        	</table>
+        	</div>
         </div>
     </nav>
 
     <!-- Header -->
     <header id="top" class="header">
+		<div class="logo">			<img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="150px"/>
+</div>
         <div id="map-canvas"></div>
         <div class="title">
             <h1>Mapa dos lugares aonde comprar ou recarregar seu cartão transporte da URBS</h1>

@@ -1,6 +1,9 @@
 body {
 	color: #fff;
 	background-color: #333;
+	color: #4d4d4d;
+	font-family: 'Jura', sans-serif;
+	line-height: normal;
 }
 
 html, body { overflow: hidden; height: 100% }
@@ -23,6 +26,14 @@ body { margin:0; padding:0; }
 	color: #000;
 	z-index: 2;
 }
+
+.header .logo {
+    position: absolute;
+    z-index: 11;
+    top: 15px;
+    left: 15px;
+}
+
 
 .header .title {
 	position:absolute;
@@ -47,24 +58,6 @@ body { margin:0; padding:0; }
     font-size: 14px;
 }
 
-.header .legend {
-	position: absolute;
-	bottom: 5px;
-	left: 5px;
-	z-index: 3;
-	font-size: 12px;
-	background-color:rgba(0, 0, 0, 0.5);
-	width: 100%;
-	
-}
-.header .legend > div { padding: 5px; }
-
-.header .logo {
-    position: absolute;
-    z-index: 11;
-    top: 10px;
-    left: 10px;
-}
 
 #places {
 	padding: 50px 0;
@@ -74,7 +67,6 @@ body { margin:0; padding:0; }
 
 #sidebar-wrapper {
 	background: white;
-	color: #222;
 	border-left: 1px solid #222;	
 }
 
@@ -94,11 +86,21 @@ body { margin:0; padding:0; }
 
 
 #sidebar-wrapper .logo {
-	margin-bottom: 15px;
+	margin: 10px 10px 10px 0;
 	width: 80%
 }
+
+#sidebar-wrapper .legend tr td{
+	padding: 0 0 10px 0;
+}
+
+#sidebar-wrapper .legend tr td:first-child{
+	text-align: center;
+}
+
 #sidebar-wrapper .brand {
     padding: 0 10px 10px;
+    font-weight: bold;
 }
 
 #sidebar-wrapper .brand h3 {
@@ -120,21 +122,37 @@ body { margin:0; padding:0; }
 
 #sidebar-wrapper .footer {
 	display: none;
-	border-top: 1px dashed #ccc;
-	padding: 10px;
 	position: absolute;
     bottom: 0;
     text-align: right;
     width: 100%;
     background-color: white;
+    font-size: 14px;
+}
+
+#sidebar-wrapper .footer .share {
+    padding: 10px;
+    border-top: 1px dashed #ccc;
+    height: 42px;
+}
+
+#sidebar-wrapper .footer .share .fb-share-button{
+    float: left;
+}
+
+#sidebar-wrapper .footer .references {
+	display: none;
+	border-top: 1px dashed #ccc;
+	padding: 10px;
+	clear: both;
 }
 
 #sidebar-wrapper .footer .block_cfc { display: none; }
 
-#sidebar-wrapper .footer .img_codeforcuritiba { width: 170px; }
+#sidebar-wrapper .footer .img_codeforcuritiba { width: 100%; max-width: 170px; }
 
 #sidebar-wrapper .footer .img_urbs {
-    width: 50px;
+    width: 100%; max-width: 50px;
     margin: 0 10px;
 }
 
@@ -144,11 +162,6 @@ body { margin:0; padding:0; }
 
 @media(min-width:768px) {
 	.header { width: 70%; }
-	.header .legend {
-		text-align: center;
-		width: auto;
-	}
-	.header .legend span { display: none; }
 
 	#sidebar-wrapper.active, #sidebar-wrapper {
 		margin-right: 0;
@@ -166,12 +179,16 @@ body { margin:0; padding:0; }
 
 }
 
-@media(min-height: 430px) {
+@media(min-height: 470px) {
 	#sidebar-wrapper .footer .block_cfc { display: table; }
 }
 
+@media(min-height: 380px) {
+	#sidebar-wrapper .footer .references { display: block; }
+}
 
-@media(min-height: 330px) {
+
+@media(min-height: 310px) {
 	#sidebar-wrapper .footer { display: block; }
 }
 
