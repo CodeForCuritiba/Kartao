@@ -113,7 +113,8 @@
                             <img src="assets/img/venda.png"/>
                         </td>
                         <td>
-                            <p>Emitir seu cartão transporte usuário</p>
+                            <p>Comprar e recarregar
+                            <br>cartões avulsos ou cartões usuários</p>
                         </td>
                     </tr>
                     <tr>
@@ -121,8 +122,7 @@
                             <img src="assets/img/posto.png"/>
                         </td>
                         <td>
-                            <p>Comprar e recarregar
-                            <br>cartões avulsos ou cartões usuários</p>
+                            <p>Emitir seu cartão transporte usuário</p>
                         </td>
                     </tr>
                 </tbody>
