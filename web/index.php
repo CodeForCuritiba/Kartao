@@ -31,7 +31,7 @@
     <!-- site description -->
     <title>Ver o mapa do cartão transporte para os ônibus de Curitiba: onde emitir e carregar o seu cartão.</title>
 
-    <meta name="description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba">
+    <meta name="description" content="Que usuário de ônibus de Curitiba nunca se viu perdido sem saber onde recarregar seu cartão de transporte? Por isso criamos o Kartão, um mapa simples e intuitivo onde se pode consultar o local mais próximo de você para recarga ou compra do seu cartão transporte da cidade.">
     <meta name="author" content="Kartao.com.br">
     <meta name="keywords" content="cartão, transporte, onibus, curitiba, mapa, urbs, usuário, banca">
 
@@ -39,7 +39,7 @@
     <meta property="og:title" content="Ver o mapa do cartão transporte para os ônibus de Curitiba: onde emitir e carregar o seu cartão."/>
     <meta property="og:site_name" content="Kartao.com.br"/>
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Mapa dos lugares onde emitir e carregar seu cartão transporte da URBS em Curitiba"/>
+    <meta property="og:description" content="Que usuário de ônibus de Curitiba nunca se viu perdido sem saber onde recarregar seu cartão de transporte? Por isso criamos o Kartão, um mapa simples e intuitivo onde se pode consultar o local mais próximo de você para recarga ou compra do seu cartão transporte da cidade."/>
     <?php $domain = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];?>
     <meta property="og:url" content="http://kartao.com.br" />
     <meta property="og:image" content="http://kartao.com.br/assets/img/kartao.jpg"/>
