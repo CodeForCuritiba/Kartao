@@ -24,6 +24,8 @@
 
     <link rel="manifest" href="/manifest.json">
 
+    <link rel="shortcut icon" href="favicon.ico"></link>
+
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -168,7 +170,7 @@
 
     <!-- Header -->
     <header id="top" class="header">
-        <div class="logo">			<img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="150px"/>
+        <div class="logo">          <img src="assets/img/kartao.png" title="Kartão" alt="Kartão" width="150px"/>
         </div>
         <div id="map-canvas"></div>
         <div class="title">
