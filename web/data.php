@@ -50,3 +50,48 @@ $linhas = array(
     'Santa Gema', 'Santa Quitéria', 'Solar', 'Tingui', 'Tramontina', 'Universidades', 'Vila Izabel', 'Vila Macedo', 'Vila Marqueto', 'Vila Rosinha',
     'Vila Suíça', 'Veneza', 'Vila Velha/Buriti',
 );
+
+
+if (isset($_GET['urbs'])) {
+	$service = "http://transporteservico.urbs.curitiba.pr.gov.br/getPois.php?c=4768a";
+	
+	$json = file_get_contents($service);
+	
+	//echo $json;
+	//die();
+	$pois = json_decode($json);
+	$vendas = $postos = array();
+	foreach ($pois as $poi) {
+		if (in_array($poi->POI_CATEGORY_NAME,array('BANCA DE REVISTA - CARTÃO TRANSPORTE'))) {
+	
+			$name = explode(' - ',$poi->POI_NAME);
+			$arr = array(
+				implode(' - ',$name),
+				floatval(str_replace(',','.',$poi->POI_LAT)),
+				floatval(str_replace(',','.',$poi->POI_LON))
+			);
+	
+			$vendas[array_shift($name)]  = $arr;
+		}
+	
+		if (in_array($poi->POI_CATEGORY_NAME,array('POSTOS DE ATENDIMENTO URBS - CARTÃO TRANSPORTE'))) {
+			$name = explode(' - ',$poi->POI_NAME);
+			$arr = array(
+				implode(' - ',$name),
+				floatval(str_replace(',','.',$poi->POI_LAT)),
+				floatval(str_replace(',','.',$poi->POI_LON))
+			);
+			if (!empty($poi->POI_DESC)) $arr[] = $poi->POI_DESC;
+	
+			$postos[array_shift($name)]  = $arr;
+		}
+	
+	}
+	
+	//echo json_encode($vendas);
+	
+	//die();
+}
+
+
+

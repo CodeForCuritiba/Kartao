@@ -74,6 +74,7 @@
     <script>
         document.postos = <?php echo json_encode($postos);?>;
         document.vendas = <?php echo json_encode($vendas);?>;
+        console.log(Object.keys(document.vendas).length);
     </script>
 </head>
 <body>
